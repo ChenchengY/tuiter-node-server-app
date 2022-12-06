@@ -1,26 +1,21 @@
-
-import express from 'express'
+import express from 'express';
 import cors from 'cors';
-import HelloController
-  from "./controllers/hello-controller.js"
-import UserController
-  from "./controllers/users/users-controller.js"
-import TuitsController
-  from "./controllers/tuits/tuits-controller.js";
-import MoviesController from './controllers/movie/movie-controller.js';
+import HelloController from "./controllers/hello-controller.js"
+import UserController from "./controllers/users/users-controller.js"
+import TuitsController from "./controllers/tuits/tuits-controller.js";
 import mongoose from "mongoose";
+
+
 const CONNECTION_STRING = process.env.DB_CONNECTION_STRING
- || 'mongodb://127.0.0.1:27017/tuiter';
+ || 'mongodb://127.0.0.1:27017/tuiter'
 mongoose.connect(CONNECTION_STRING);
 
-// mongoose.connect('mongodb+srv://chenchengyi:justinying@cluster0.mgjv01x.mongodb.net/?retryWrites=true&w=majority');
+// mongoose.connect('mongodb+srv://bcarter1:<password>@cluster0.t22rzg9.mongodb.net/?retryWrites=true&w=majority');
 
 const app = express()
 app.use(cors())
 app.use(express.json());
+TuitsController(app);
 HelloController(app)
 UserController(app)
-TuitsController(app);
-MoviesController(app);
-app.listen(process.env.PORT || 4000);
-
+app.listen(process.env.PORT || 4000)
