@@ -7,7 +7,7 @@ import UserController
   from "./controllers/users/users-controller.js"
 import TuitsController
   from "./controllers/tuits/tuits-controller.js";
-import MoviesController from './controllers/movie/movie-controller.js';
+// import MoviesController from './controllers/movie/movie-controller.js';
 import mongoose from "mongoose";
 const CONNECTION_STRING = process.env.DB_CONNECTION_STRING
  || 'mongodb://127.0.0.1:27017/tuiter';
@@ -21,6 +21,6 @@ app.use(express.json());
 HelloController(app)
 UserController(app)
 TuitsController(app);
-MoviesController(app);
+// MoviesController(app);
 app.listen(process.env.PORT || 4000);
 
